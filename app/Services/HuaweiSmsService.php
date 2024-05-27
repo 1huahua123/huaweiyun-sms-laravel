@@ -15,7 +15,7 @@ use Psr\Http\Message\ResponseInterface;
 class HuaweiSmsService
 {
     protected Client $client;
-    protected $config;
+    protected mixed $config;
 
     public function __construct()
     {
@@ -48,12 +48,10 @@ class HuaweiSmsService
             'signature' => $this->config['signature'],
         ];
 
-        $response = $this->client->post($this->config['endpoint'], [
+        return $this->client->post($this->config['endpoint'], [
             'headers' => $headers,
             'form_params' => $body
         ]);
-
-        return $response;
     }
 
     /**
