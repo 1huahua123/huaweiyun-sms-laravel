@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SmsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 发送短信验证码
+Route::post('/send-code', [SmsController::class, 'sendVerificationCode']);
+// 验证短信验证码
+Route::post('/verify-code', [SmsController::class, 'verifyCode']);

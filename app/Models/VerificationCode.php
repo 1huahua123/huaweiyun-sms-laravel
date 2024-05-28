@@ -1,20 +1,30 @@
 <?php
+/**
+ * @Author: Ray
+ * @Date: 2024/5/28 09:16
+ * @Project: huaweiyun-sms-laravel
+ * @Description: 验证码存储
+ */
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class VerificationCode extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
         'phone',
-        'username',
-        'token'
+        'code',
+        'created_at'
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime'
     ];
 
     public $incrementing = false;
@@ -30,4 +40,8 @@ class User extends Authenticatable
             }
         });
     }
+
+    public $timestamps = false;
+
+    protected array $dates = ['created_at'];
 }
