@@ -13,6 +13,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Random\RandomException;
 
 class SmsController extends Controller
 {
@@ -28,7 +29,7 @@ class SmsController extends Controller
      *
      * @param Request $request
      * @return JsonResponse
-     * @throws GuzzleException
+     * @throws GuzzleException|RandomException
      */
     public function sendVerificationCode(Request $request): JsonResponse
     {
